@@ -1,5 +1,5 @@
 # Autotraffic
-A Python package that provides you with up-to-date information about all German highways (Autobahn). The package provides traffic, electric charging stations, webcams, road works and closeures and more. It uses the API of Autobahn GmbH (https://autobahn.api.bund.dev/) and delivers the results in easy to use DataFrames.
+A Python package that provides you with up-to-date information about all German highways (Autobahn). The package returns traffic informations, electric charging stations, webcams, road works, closures and more. It uses the API of Autobahn GmbH (https://autobahn.api.bund.dev/) and delivers the results in easy to use DataFrames.
 
 ## Installation
 
@@ -290,4 +290,40 @@ charging_station_details
 
 ```
 
-##
+# Usefull Examples
+
+## Display highway webcams
+
+```python
+import io
+import requests
+from PIL import Image
+import matplotlib.pyplot as plt
+
+import autotraffic
+
+# Initialize
+api = autotraffic.Autobahn()
+roads = api.get_highways()
+
+# Display a webcam image
+
+road_id = 'A1'
+
+# Get all webcams
+webcams = api.get_webcams(road_id)
+
+# Choose the first one (for the demo)
+image_url = webcams['imageurl'][0]
+
+# Request the content
+data = requests.get(image_url).content
+
+# Read the byte data into an imgage
+img = Image.open(io.BytesIO(data))
+
+# Display the image
+plt.imshow(img)
+plt.show()
+```
+
