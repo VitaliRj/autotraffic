@@ -131,7 +131,7 @@ img = Image.open(io.BytesIO(data))
 plt.imshow(img)
 plt.show()
 ```
-![webcam_example_image](img/webcam_example.png)
+![webcam_example_image](img/webcam_example_1.png)
 
 ### Warnings
 ```python
@@ -312,7 +312,7 @@ charging_station_details
 ```
 
 ## Useful Examples
-I will add some useful code examples with below.
+I will add some useful 'end-to-end' code examples below.
 
 ### Display highway webcams
 
@@ -328,7 +328,7 @@ import autotraffic
 api = autotraffic.Autobahn()
 #roads = api.get_highways()
 
-road_id = 'A1'
+road_id = 'A3'
 
 # Get all webcams
 webcams = api.get_webcams(road_id)
@@ -346,5 +346,5 @@ img = Image.open(io.BytesIO(data))
 plt.imshow(img)
 plt.show()
 ```
-![webcam_example_image](img/webcam_example.png)
+![webcam_example_image](img/webcam_example_2.png)
 
