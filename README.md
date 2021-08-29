@@ -18,6 +18,12 @@ api = autotraffic.Autobahn()
 ```python
 # Get all highways (road_ids)
 highways = api.get_highways()
+highways
+|     | roads   |
+|----:|:--------|
+|   0 | A1      |
+|   1 | A2      |
+|   2 | A3      |
 ```
 
 ```python
