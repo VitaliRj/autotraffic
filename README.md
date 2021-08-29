@@ -290,7 +290,7 @@ charging_station_details
 
 ```
 
-# Usefull Examples
+# Useful Examples
 
 ## Display highway webcams
 
