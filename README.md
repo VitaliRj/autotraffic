@@ -19,6 +19,7 @@ api = autotraffic.Autobahn()
 # Get all highways (road_ids)
 highways = api.get_highways()
 highways
+
 |     | roads   |
 |----:|:--------|
 |   0 | A1      |
@@ -26,6 +27,7 @@ highways
 |   2 | A3      |
 ```
 
+Now you can request more information such as road works, by using the choosing the road_id from the roads column of highways.
 ```python
 # ----------- Road Works ----------- #
 road_id = 'A1'
