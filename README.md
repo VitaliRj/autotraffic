@@ -111,6 +111,27 @@ webcam_details
     "linkurl": "https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10108109881648294854"
 }
 ```
+You can use "imageurl" to load the image data and display it.
+```python
+import io
+import requests
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Choose the first one (for the demo)
+image_url = webcams['imageurl'][0]
+
+# Request the content
+data = requests.get(image_url).content
+
+# Read the byte data into an imgage
+img = Image.open(io.BytesIO(data))
+
+# Display the image
+plt.imshow(img)
+plt.show()
+```
+![webcam_example_image](img/webcam_example.png)
 
 ### Warnings
 ```python
@@ -290,9 +311,10 @@ charging_station_details
 
 ```
 
-# Useful Examples
+## Useful Examples
+I will add some useful code examples with below.
 
-## Display highway webcams
+### Display highway webcams
 
 ```python
 import io
