@@ -304,9 +304,7 @@ import autotraffic
 
 # Initialize
 api = autotraffic.Autobahn()
-roads = api.get_highways()
-
-# Display a webcam image
+#roads = api.get_highways()
 
 road_id = 'A1'
 
