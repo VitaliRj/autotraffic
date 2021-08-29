@@ -27,7 +27,11 @@ highways
 |   2 | A3      |
 ```
 
-Now you can request more information such as road works, by using the choosing the road_id from the roads column of highways.
+Now you can request more information such as road works, webcams, warnings, resting/parking areas, closures and electric charging stations by using the road_id from the roads column of highways.
+
+In addition, you can also retrieve specific details by using the identifier column values and get_..._details(identifier), as shown below.
+
+### Road Works
 ```python
 # ----------- Road Works ----------- #
 road_id = 'A1'
@@ -69,6 +73,7 @@ roadwork_details
 }
 ```
 
+### Webcams
 ```python
 # ----------- Webcams ----------- #
 webcams = api.get_webcams(road_id)
@@ -107,6 +112,7 @@ webcam_details
 }
 ```
 
+### Warnings
 ```python
 # ----------- Warnings ----------- #
 road_id = 'A1'
@@ -148,6 +154,7 @@ warning_details
 }
 ```
 
+### Resting Areas
 ```python
 # ----------- Resting Areas ----------- #
 road_id = 'A1'
@@ -195,8 +202,7 @@ resting_area_details
     "subtitle": "(Ostseeblick S)"
 }
 ```
-
-
+### Closures
 ```python
 # ----------- Closures ----------- #
 road_id = 'A1'
@@ -237,9 +243,9 @@ closure_details
     "startTimestamp": "2021-08-30T19:00:00.000+0200"
 }
 ```
-
+### Charging Stations
 ```python
-# ----------- Charging Stations----------- #
+# ----------- Charging Stations ----------- #
 road_id = 'A1'
 charging_stations = api.get_charging_stations(road_id)
 
