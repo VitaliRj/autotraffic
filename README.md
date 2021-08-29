@@ -326,4 +326,5 @@ img = Image.open(io.BytesIO(data))
 plt.imshow(img)
 plt.show()
 ```
+![webcam_example_image](img/webcam_example.png)
 
