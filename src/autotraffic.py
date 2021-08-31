@@ -47,7 +47,7 @@ class Autobahn:
 
 
     # ----------- Road Works ----------- #
-    def get_roadworks(self, road_id):
+    def get_roadworks(self, road_id: str):
         """ Returns a pandas.DataFrame of the current construction for a given highway.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -65,7 +65,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_roadwork_details(self, roadwork_id):
+    def get_roadwork_details(self, roadwork_id: str):
         """ Returns a details for a given roadwork identifier.
         Args:
             [string] roadwork_id: a string refering to a roadwork identifier
@@ -85,7 +85,7 @@ class Autobahn:
 
 
     # ----------- Webcams ----------- #
-    def get_webcams(self, road_id):
+    def get_webcams(self, road_id: str):
         """ Returns a pandas.DataFrame with available webcams for a given highway.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -103,7 +103,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_webcams_details(self, webcam_id):
+    def get_webcams_details(self, webcam_id: str):
         """ Returns a details for a given webcam identifier.
         Args:
             [string] webcam_id: a string refering to a webcam identifier
@@ -123,7 +123,7 @@ class Autobahn:
 
 
     # ----------- Resting Areas ----------- #
-    def get_resting_areas(self, road_id):
+    def get_resting_areas(self, road_id: str):
         """ Returns a pandas.DataFrame of possible resting areas along a given highway.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -141,7 +141,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_resting_area_details(self, rest_id):
+    def get_resting_area_details(self, rest_id: str):
         """ Returns resting areas details for a given resting area identifier.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -161,7 +161,7 @@ class Autobahn:
 
 
     # ----------- Warnings ----------- #
-    def get_warnings(self, road_id):
+    def get_warnings(self, road_id: str):
         """ Returns a pandas.DataFrame of current warnings for a given highway.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -179,7 +179,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_warning_details(self, warning_id):
+    def get_warning_details(self, warning_id: str):
         """ Returns warning details for a given warning identifier.
         Args:
             [string] warning_id: a string refering to a highway e.g. 'A1'
@@ -217,7 +217,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_closure_details(self, closure_id):
+    def get_closure_details(self, closure_id: str):
         """ Returns closures details for a given closure identifier.
         Args:
             [string] closure_id: a string refering to a highway e.g. 'A1'
@@ -237,7 +237,7 @@ class Autobahn:
 
 
     # ----------- Charging Stations----------- #
-    def get_charging_stations(self, road_id):
+    def get_charging_stations(self, road_id: str):
         """ Returns a pandas.DataFrame of charging stations for a given highway.
         Args:
             [string] road_id: a string refering to a highway e.g. 'A1'
@@ -255,7 +255,7 @@ class Autobahn:
             print(response.status_code)
             return response.status_code
 
-    def get_charging_station_details(self, charging_station_id):
+    def get_charging_station_details(self, charging_station_id: str):
         """ Returns charging station details for a given closure identifier.
         Args:
             [string] closure_id: a string refering to a highway e.g. 'A1'
