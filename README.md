@@ -2,9 +2,16 @@
 A Python package that provides you with up-to-date information about all German highways (Autobahn). The package returns traffic informations, electric charging stations, webcams, road works, closures and more. It uses the API of Autobahn GmbH (https://autobahn.api.bund.dev/) and delivers the results in easy to use DataFrames.
 
 ## Installation
+For now you need to install the wheel file, I will publish it on PyPi soon.
 
-```python
-pip install autotraffic
+If you are in the main directory, just use:
+```console
+pip install -e .
+```
+
+Or if you go to the dist directory, you can use:
+```console
+pip install .\autotraffic-0.1.0-py3-none-any.whl
 ```
 
 ## Usage

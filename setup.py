@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='autotraffic',
-    version='0.0.1',
+    version='0.1.0',
     description='A Python package that provides you with up-to-date information about all German highways (Autobahn)',
     py_modules=["autotraffic"],
     package_dir={'':'src'},
