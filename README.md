@@ -4,12 +4,12 @@ A Python package that provides you with up-to-date information about all German 
 ## Installation
 For now you need to install the wheel file, I will publish it on PyPi soon.
 
-If you are in the main directory, just use:
+If you are in the root directory, just use:
 ```console
 pip install -e .
 ```
 
-Or if you go to the dist directory, you can use:
+Or you go to the dist directory and use:
 ```console
 pip install .\autotraffic-0.1.0-py3-none-any.whl
 ```
