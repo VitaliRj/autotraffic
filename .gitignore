@@ -9,12 +9,12 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+.vscode/
 develop-eggs/
 #dist/
 downloads/
 eggs/
 .eggs/
-.vscode/
 lib/
 lib64/
 parts/
