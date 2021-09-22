@@ -1,5 +1,7 @@
 import requests
 import pandas as pd
+import requests
+import pandas as pd
 
 class Autobahn:
     """A API wrapper class for the Autobahn App API https://autobahn.api.bund.dev/.
@@ -36,15 +38,17 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with available highways
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
-        response = requests.request("GET", self.server)
-        if response.status_code == 200:
-            return pd.DataFrame(response.json())
-            
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", self.server)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json())
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Road Works ----------- #
     def get_roadworks(self, road_id: str):
@@ -54,16 +58,20 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with roadworks,
             else the None.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/roadworks"
 
-        response = requests.request("GET", url)
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['roadworks'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['roadworks'])
-        else:
-            print(response.status_code)
-            return response.status_code
 
     def get_roadwork_details(self, roadwork_id: str):
         """ Returns a details for a given roadwork identifier.
@@ -72,17 +80,21 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given roadwork_id,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/roadworks/{roadwork_id}"
 
         response = requests.request("GET", url)
 
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Webcams ----------- #
     def get_webcams(self, road_id: str):
@@ -92,16 +104,19 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with available webcams,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/webcam"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['webcam'])
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['webcam'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     def get_webcams_details(self, webcam_id: str):
         """ Returns a details for a given webcam identifier.
@@ -110,17 +125,19 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given webcam_id,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/webcam/{webcam_id}"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Resting Areas ----------- #
     def get_resting_areas(self, road_id: str):
@@ -130,16 +147,19 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with resting areas
             along a given road_id, else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/parking_lorry"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['parking_lorry'])
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['parking_lorry'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     def get_resting_area_details(self, rest_id: str):
         """ Returns resting areas details for a given resting area identifier.
@@ -148,17 +168,19 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given rest_id,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/parking_lorry/{rest_id}"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Warnings ----------- #
     def get_warnings(self, road_id: str):
@@ -168,16 +190,19 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with resting areas
             along a given road_id, else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/warning"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['warning'])
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['warning'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     def get_warning_details(self, warning_id: str):
         """ Returns warning details for a given warning identifier.
@@ -186,17 +211,19 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given warning_id,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/warning/{warning_id}"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Closures ----------- #
     def get_closures(self, road_id):
@@ -206,16 +233,19 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with closures
             along a given road_id, else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/closure"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['closure'])
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['closure'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     def get_closure_details(self, closure_id: str):
         """ Returns closures details for a given closure identifier.
@@ -224,17 +254,19 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given closures,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/closure/{closure_id}"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
-
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     # ----------- Charging Stations----------- #
     def get_charging_stations(self, road_id: str):
@@ -244,16 +276,19 @@ class Autobahn:
         Returns:
             [pandas.DataFrame] if request is successful, a pandas.DataFrame with charging stations
             along a given road_id, else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/{road_id}/services/electric_charging_station"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return pd.DataFrame(response.json()['electric_charging_station'])
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return pd.DataFrame(response.json()['electric_charging_station'])
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
     def get_charging_station_details(self, charging_station_id: str):
         """ Returns charging station details for a given closure identifier.
@@ -262,13 +297,16 @@ class Autobahn:
         Returns:
             [dict] if request is successful, a dict with details for a given charging station,
             else the response.status_code.
+        Raises:
+            SystemExit: If request was not successful.
         """
         url = f"https://verkehr.autobahn.de/o/autobahn/details/electric_charging_station/{charging_station_id}"
 
-        response = requests.request("GET", url)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(response.status_code)
-            return response.status_code
+        try:
+            response = requests.request("GET", url)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise SystemExit(f"The request was not successful: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
